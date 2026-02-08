@@ -2,32 +2,11 @@
   'use strict';
 
   document.addEventListener("DOMContentLoaded", () => {
-    const intro = document.getElementById("video-intro");
-    const video = document.getElementById("intro-video");
     const site = document.getElementById("site-content");
 
-    // Lock scroll initially
-    document.body.classList.add("no-scroll");
-
-    // Skip intro if already played 
-    if (sessionStorage.getItem("introPlayed")) {
-      intro.style.display = "none";
-      site.classList.remove("hidden");
-      document.body.classList.remove("no-scroll");
-      return;
-    }
-
-    video.addEventListener("ended", () => {
-      sessionStorage.setItem("introPlayed", "true");
-
-      intro.classList.add("fade-out");
-
-      setTimeout(() => {
-        intro.style.display = "none";
-        site.classList.remove("hidden");
-        document.body.classList.remove("no-scroll"); 
-      }, 1000);
-    });
+    // Show site content immediately since no video intro
+    site.classList.remove("hidden");
+    document.body.classList.remove("no-scroll");
   });
 
   document.addEventListener('DOMContentLoaded', () => {
